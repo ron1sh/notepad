@@ -4,14 +4,14 @@ import Newbutton from "./Newbutton";
 export default function Finaltemplate(){
     return(
         
-        <div className=" flex flex-col realtive min-h-dvh scrollbar-hide [ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className=" flex flex-col realtive min-h-dvh w-[100vw] scrollbar-hide [ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 
             <div className="w-full flex justify-center pt-10 px-20">
                 <Searchbar />
             </div>
 
             
-            <div className="w-full flex-1 flex  justify-center overflow-auto scrollbar-hide">
+            <div className="w-[100%] flex-1 flex  justify-center overflow-auto scrollbar-hide">
                 <Fetchedlist />
             </div>
 

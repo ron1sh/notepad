@@ -5,7 +5,7 @@ import NotFound from "./components/NotFound";
 
 function Layout(){
   return(
-    <div className="min-h-screen w-screen flex flex-col items-center  scrollbar-hide [ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <div className="m-h-screen max-w-screen flex flex-col items-center  scrollbar-hide [ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       <Outlet />
     </div>
     
