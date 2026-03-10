@@ -2,6 +2,7 @@ import {useNavigate,createBrowserRouter,RouterProvider,Outlet} from "react-route
 import Finaltemplate from "./components/finaltemplate";
 import Inputitems from "./components/Inputitems";
 import NotFound from "./components/NotFound";
+import Useraccount from "./components/Useraccount";
 
 function Layout(){
   return(
@@ -19,6 +20,7 @@ export default function App(){
     children:[
       {index:true,element:<Finaltemplate />},
       {path:"create",element:<Inputitems />},
+      {path:"profile",element:<Useraccount />},
       { path: "*", element: <NotFound /> }
     ]
   }])

@@ -43,7 +43,7 @@ export default function Inputitems(){
             setTimeout(() => {
                     setcheckserver(false);
                     navigate("/", { replace: true });
-                }, 2000);
+                }, 1200);
 
             console.error("Failed to save note");
         }
