@@ -12,7 +12,7 @@ export default function Appendandseedata({onClose}){
                 <textarea name="" value={text} className={`resize-none outline-none border-none bg-transparent flex-1 text-lg md:text-2xl mt-4 ${hideScrollbar}`}></textarea>
 
                 <div className="flex justify-end hover:cursor-pointer pt-4">
-                    <button className="border text-xl md:text-2xl font-bold border-black px-6 py-2 md:px-10 md:py-3 cursor-pointer hover:bg-[#5e8c6b] hover:text-white transition-all rounded-2x">Update</button>
+                    <button className="border text-xl md:text-2xl font-bold border-black px-6 py-2 md:px-10 md:py-3 cursor-pointer hover:bg-[#5e8c6b] hover:text-white transition-all rounded-2x" onClick={onClose}>Update</button>
                 </div>
 
             </div>
