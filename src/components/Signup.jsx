@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-
-export default function Useraccount() {
+import Protectedauthrouter from "./protectedauthroute";
+export default function Signup() {
     const [showPassword, setShowPassword] = useState(false);
     const [email,setemail]=useState("");
     const [password,setpassword]=useState("");
     const [emailerr,setemailerr]=useState("");
     const [passerr,setpasserr]=useState("");
     const navigate = useNavigate();
+    const [loginstatus,setloginstatus]=useState(false);
 
-    const logininfochecker=async (e)=>{
+    const signupinfochecker=async (e)=>{
+        setloginstatus(false);
         e.preventDefault();
         setemailerr("");
         setpasserr("");
@@ -60,8 +62,9 @@ export default function Useraccount() {
 
 
         try{
-            const response=await fetch("/api/login",{
+            const response=await fetch("/api/signup",{
                 method:"POST",
+                credentials: "include", 
                 headers:{
                     "Content-Type":"application/json"
                 },
@@ -72,24 +75,33 @@ export default function Useraccount() {
             })
 
             if(response.ok){
+                setloginstatus(true);
                 setTimeout(() => {
                     navigate("/", { replace: true });
-                }, 1200);
+                }, 500);
             }else {
                 const data=await response.json();
-                setpasserr(data.message||"Login failed.");
+                setpasserr(data.message||"Signup failed.");
+                setloginstatus(false);
             }
         }catch(err){
+            setloginstatus(false);
             setpasserr("Sorry something went wrong. Please try again.");
         }
 
     }
 
     return (
-        <div className="min-h-screen w-screen flex justify-center items-center ">
-        <form onSubmit={logininfochecker} noValidate className="w-full max-w-md sm:max-w-lg md:max-w-md lg:max-w-sm p-8 bg-white rounded-3xl shadow-2xl flex flex-col gap-3">
-            <h2 className="text-3xl font-bold text-center text-indigo-700">Welcome Back</h2>
-            <p className="text-center text-gray-500">Login to your account</p>
+        <Protectedauthrouter loggedin={false}>
+        <div className="min-h-screen w-screen flex justify-center items-center relative">
+            {loginstatus &&
+            <div className="fixed top-10 left-1/2 -translate-x-1/2 z-[100] bg-green-600 text-white px-6 py-3 rounded-xl shadow-2xl font-bold animate-bounce">
+                    Account created!            
+                      </div>
+                      }
+        <form onSubmit={signupinfochecker} noValidate className="w-full max-w-md sm:max-w-lg md:max-w-md lg:max-w-sm p-8 bg-white rounded-3xl shadow-2xl flex flex-col gap-3">
+            <h2 className="text-3xl font-bold text-center text-indigo-700">Welcome To Notepad</h2>
+            <p className="text-center text-gray-500">Create an Account</p>
 
             <div className="flex flex-col gap-2">
             <label htmlFor="email" className="text-gray-700 font-semibold">Email</label>
@@ -124,16 +136,16 @@ export default function Useraccount() {
 
         
             <button type="submit" className="bg-indigo-600 text-white font-bold py-3 rounded-full w-full hover:bg-indigo-700 transition shadow-md cursor-pointer" >
-            Login
+            Signup
             </button>
-
-            <p className="text-center text-gray-500">
-            Don't have an account?{" "}
-            <span className="text-indigo-600 font-semibold hover:underline cursor-pointer">
-                Sign up
-            </span>
-            </p>
+            <button type="button"  className="text-center text-gray-500" onClick={()=>navigate("/login")} >
+            Already have an account?
+                <span className="text-indigo-600 font-semibold hover:underline cursor-pointer">
+                Login
+                </span>
+            </button>
         </form>
         </div>
+        </Protectedauthrouter>
     );
     }

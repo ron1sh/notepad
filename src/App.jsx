@@ -1,8 +1,10 @@
-import {useNavigate,createBrowserRouter,RouterProvider,Outlet} from "react-router-dom";
+import {createBrowserRouter,RouterProvider,Outlet} from "react-router-dom";
 import Finaltemplate from "./components/finaltemplate";
 import Inputitems from "./components/Inputitems";
 import NotFound from "./components/NotFound";
-import Useraccount from "./components/Useraccount";
+import Signup from "./components/Signup";
+import Login from "./components/login";
+import Profile from "./components/Profile";
 
 function Layout(){
   return(
@@ -20,7 +22,9 @@ export default function App(){
     children:[
       {index:true,element:<Finaltemplate />},
       {path:"create",element:<Inputitems />},
-      {path:"profile",element:<Useraccount />},
+      {path:"login",element:<Login />},
+      {path:"signup",element:<Signup />},
+      {path:"profile",element:<Profile />},
       { path: "*", element: <NotFound /> }
     ]
   }])

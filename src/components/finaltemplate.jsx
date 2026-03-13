@@ -5,15 +5,15 @@ import Profilebutton from "./profilebutton";
 export default function Finaltemplate(){
     return(
         
-        <div className=" flex flex-col realtive min-h-[100%]  min-w-[100%] scrollbar-hide [ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-7 py-5">
+        <div className=" flex flex-col relative min-h-[100%]  min-w-[100%] scrollbar-hide [ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden px-4 py-5">
             <Profilebutton />
 
-            <div className="w-full flex justify-center pt-10 px-20">
+            <div className="w-full  flex justify-center pt-2 px-5">
                 <Searchbar />
             </div>
 
             
-            <div className="w-[100%] flex-1 flex  justify-center overflow-auto scrollbar-hide">
+            <div className="w-[100%] flex flex-1 overflow-auto scrollbar-hide">
                 <Fetchedlist />
             </div>
 
